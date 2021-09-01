@@ -129,16 +129,16 @@ function correctQuantity(){
 // Champs d'entrée ville correct/incorrect 
 function correctCity() { 
   let i =0;
-  let isChecked = false;
+  let coche = false;
   while ( i < city.length) {
     if (city[i].checked) {
-      isChecked=true;
+      coche=true;
       break;
     } else {
       i++
     }
   }
-  if(!isChecked) {
+  if(!coche) {
     errCity.textContent ='Veuillez choisir une ville'
     return false;
     } else {
