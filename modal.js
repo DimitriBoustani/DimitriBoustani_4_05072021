@@ -32,7 +32,7 @@ const errQuantity = document.getElementById("errQuantity")
 const errCity = document.getElementById("errCity")
 
 // Const Envois formulaire
-const cparti = document.getElementById("parti");
+const parti = document.getElementById("parti");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -62,7 +62,7 @@ function closemodalform(){
 
 // Champs d'entrée prenom/nom correct/incorrect
 function correctID(value) {
-  return /^[A-Z-a-z]{2,20}$/.test(value);
+  return /^[A-Za-z]{2,20}$/.test(value);
 };
 
 firstname.addEventListener("change",($event)=>{
@@ -102,3 +102,47 @@ email.addEventListener("change",($event)=>{
     return true;
   }
 });
+
+// Champs d'entrée date correct/incorrect
+function correctBirthdate(){
+  if(!birthdate.value){
+    errBirth.style.display="block";
+    errBirth.textContent="Veuillez saisir correctement votre Date de naissance";
+    return false;
+  }else{
+    errBirth.style.display="none";
+    return true;
+  }
+};
+
+// Champs d'entrée quantité correct/incorrect
+function correctQuantity(){
+  if(quantity.value ==="" || quantity.value >= 100) {
+    errQuantity.textContent = "Veuillez choisir un nombre entre 0 et 99";
+    return false;
+  }else {
+    errQuantity.display="none";
+    return true;
+  }
+};
+
+// Champs d'entrée ville correct/incorrect 
+function correctCity() { 
+  let i =0;
+  let isChecked = false;
+  while ( i < city.length) {
+    if (city[i].checked) {
+      isChecked=true;
+      break;
+    } else {
+      i++
+    }
+  }
+  if(!isChecked) {
+    errCity.textContent ='Veuillez choisir une ville'
+    return false;
+    } else {
+      errCity.display="none";
+      return true;
+    }
+};
