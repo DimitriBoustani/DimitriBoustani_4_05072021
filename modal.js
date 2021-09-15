@@ -11,17 +11,21 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const confirmation_mess = document.getElementById('confirmation_mess');
+const modalB = document.querySelector(".bground");
 
 // Fermeture Formulaire
 const closemodal = document.getElementById("closemodal");
 
 // Const Information
+const form1 = document.getElementById("dep");
 const firstname = document.getElementById("first");
 const lastname = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
-const city = document.getElementsByName("location");
+const city = document.querySelectorAll("input[type=radio]");
+
 
 // Const Message d'erreur
 const errName = document.getElementById("errName");
@@ -129,16 +133,16 @@ function correctQuantity(){
 // Champs d'entrée ville correct/incorrect 
 function correctCity() { 
   let i =0;
-  let coche = false;
+  let isChecked = false;
   while ( i < city.length) {
     if (city[i].checked) {
-      coche=true;
+      isChecked=true;
       break;
     } else {
       i++
     }
   }
-  if(!coche) {
+  if(!isChecked) {
     errCity.textContent ='Veuillez choisir une ville'
     return false;
     } else {
@@ -146,3 +150,20 @@ function correctCity() {
       return true;
     }
 };
+
+// Champs d'entrée validation du formulaire
+form1.addEventListener('submit', (e) => {
+  
+  e.preventDefault();
+  if( correctID() && correctMail() && correctBirthdate() && correctQuantity() && correctCity() ) {
+      modalB.style.display = "none";
+      confirmation_mess.style.display = "block";  
+      document.querySelectorAll('.confirmation_ferme').forEach(button =>{
+      button.addEventListener('click', button => {
+      if (confirmation_mess.style.display === "block"){
+          confirmation_mess.style.display = 'none';
+      }})});
+      form1.reset();
+    } 
+    return true;
+  })

@@ -27,8 +27,7 @@
         <i class="fa fa-bars"></i>
       </a>
     </div>
-    </div>
-    </div>
+  </div>
       
     <main>
         
@@ -64,7 +63,7 @@
                 name="reserve"
                 action="#"
                 method="get"
-                onsubmit="return validate();"
+                id="dep"
               >
                 <div
                   class="formData">
@@ -207,7 +206,7 @@
                     <span class="checkbox-icon"></span>
                     J'ai lu et accepté les conditions d'utilisation.
                   </label>
-                  <br>
+                  <p class="msgerreur" id="errCond"></p>
                   <input class="checkbox-input" type="checkbox" id="checkbox2"/>
                   <label class="checkbox2-label" for="checkbox2">
                     <span class="checkbox-icon"></span>
@@ -225,6 +224,13 @@
                 />
               </form>
             </div>
+          </div>
+        </div>
+        <div class="envoi_confirmation" id="confirmation_mess">
+          <div class="confirmation">
+              <button class="confirmation_ferme" id="ferme"></button>
+              <p>Merci ! <br> Vos infos sont recues.</p>
+              <button class="btn_fermer confirmation_ferme" id="confirmation_ferme" value="ferme">Fermer</button>
           </div>
         </div>
     </main>
