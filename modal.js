@@ -47,123 +47,122 @@ function launchModal() {
 }
 
 // Fermeture Formulaire (1)
-closemodal.addEventListener("click",($event)=>{
+closemodal.addEventListener("click", ($event) => {
   $event.preventDefault();
   closemodalform();
-  });
+});
 
-function closemodalform(){
-  
+function closemodalform() {
+
   modalbg.style.display = "none";
-  errName.style.display="none";
-  errLastName.style.display="none";
-  errEmail.style.display="none";
-  errBirth.style.display="none";
-  errQuantity.style.display="none";
-  errCity.style.display="none";
+  errName.style.display = "none";
+  errLastName.style.display = "none";
+  errEmail.style.display = "none";
+  errBirth.style.display = "none";
+  errQuantity.style.display = "none";
+  errCity.style.display = "none";
 
 };
 
 // Champs d'entrée prenom/nom correct/incorrect
-function correctID(value) {
-  return /^[A-Za-z]{2,20}$/.test(value);
+function correctID(field, errfield) {
+  let test = /^[A-Za-z]{2,20}$/.test(field.value);
+  if (test == false) {
+    errfield.textContent = "Merci de saisir votre prenom"
+    errfield.style.display = "block";
+    return false;
+  } else {
+    errfield.style.display = "none";
+    return true;
+  }
 };
 
-firstname.addEventListener("change",($event)=>{
-  if(correctID(firstname.value)==false){
-    errName.textContent="Merci de saisir votre prenom"
-    errName.style.display="block";
-    return false;
-  }else{
-    errName.style.display="none";
-    return true;
-  }
+firstname.addEventListener("change", ($event) => {
+  correctID(firstname, errName)
 });
 
-lastname.addEventListener("change",($event)=>{
-  if(correctID(lastname.value)==false){
-    errLastName.textContent="Merci de saisir votre nom"
-    errLastName.style.display="block";
-    return false;
-  }else{
-    errLastName.style.display="none";
-    return true;
-  }
+lastname.addEventListener("change", ($event) => {
+  correctID(lastname, errLastName)
 });
 
 // Champs d'entrée email correct/incorrect
-function correctMail(value) {
-  return /^[A-Z-a-z-0-9-.]+@([A-Z-a-z-0-9]+\.)+[A-Z-a-z-0-9]{2,40}$/.test(value);
-};
-
-email.addEventListener("change",($event)=>{
-  if(correctMail(email.value)==false){
-    errEmail.textContent="Merci de saisir votre e-mail"
-    errEmail.style.display="block";
+function correctMail(field, errval) {
+  let test = /^[A-Z-a-z-0-9-.]+@([A-Z-a-z-0-9]+\.)+[A-Z-a-z-0-9]{2,40}$/.test(field.value);
+  if (test == false) {
+    errval.textContent = "Merci de saisir votre e-mail"
+    errval.style.display = "block";
     return false;
-  }else{
-    errEmail.style.display="none";
+  } else {
+    errval.style.display = "none";
     return true;
   }
+};
+
+email.addEventListener("change", ($event) => {
+  correctMail(email, errEmail)
 });
 
 // Champs d'entrée date correct/incorrect
-function correctBirthdate(){
-  if(!birthdate.value){
-    errBirth.style.display="block";
-    errBirth.textContent="Veuillez saisir correctement votre Date de naissance";
+function correctBirthdate() {
+  if (!birthdate.value) {
+    errBirth.style.display = "block";
+    errBirth.textContent = "Veuillez saisir correctement votre Date de naissance";
     return false;
-  }else{
-    errBirth.style.display="none";
+  } else {
+    errBirth.style.display = "none";
     return true;
   }
 };
 
 // Champs d'entrée quantité correct/incorrect
-function correctQuantity(){
-  if(quantity.value ==="" || quantity.value >= 100) {
+function correctQuantity() {
+  if (quantity.value === "" || quantity.value >= 100) {
     errQuantity.textContent = "Veuillez choisir un nombre entre 0 et 99";
     return false;
-  }else {
-    errQuantity.display="none";
+  } else {
+    errQuantity.display = "none";
     return true;
   }
 };
 
 // Champs d'entrée ville correct/incorrect 
-function correctCity() { 
-  let i =0;
+function correctCity() {
+  let i = 0;
   let isChecked = false;
-  while ( i < city.length) {
+  while (i < city.length) {
     if (city[i].checked) {
-      isChecked=true;
+      isChecked = true;
       break;
     } else {
       i++
     }
   }
-  if(!isChecked) {
-    errCity.textContent ='Veuillez choisir une ville'
+  if (!isChecked) {
+    errCity.textContent = 'Veuillez choisir une ville'
     return false;
-    } else {
-      errCity.display="none";
-      return true;
-    }
+  } else {
+    errCity.display = "none";
+    return true;
+  }
 };
 
 // Champs d'entrée validation du formulaire
 form1.addEventListener('submit', (e) => {
-  
+  console.log("in submit")
   e.preventDefault();
-  if( correctID() && correctMail() && correctBirthdate() && correctQuantity() && correctCity() ) {
-      modalB.style.display = "none";
-      confirmation_mess.style.display = "block";  
-      document.querySelectorAll('.confirmation_ferme').forEach(button =>{
+  if (correctID(firstname, errName) && correctID(lastname, errLastName) && correctMail(email, errEmail) && correctBirthdate(birthdate, errBirth) && correctQuantity(quantity, errQuantity) && correctCity(city, errCity)) {
+    console.log("in if")
+    modalB.style.display = "none";
+    confirmation_mess.style.display = "block";
+    document.querySelectorAll('.confirmation_ferme').forEach(button => {
       button.addEventListener('click', button => {
-      if (confirmation_mess.style.display === "block"){
+        if (confirmation_mess.style.display === "block") {
           confirmation_mess.style.display = 'none';
-      }})});
-      form1.reset();
-    } 
-    return true;
-  })
+        }
+      })
+    });
+    form1.reset();
+  } else {}
+  console.log("in else")
+  return true;
+})
