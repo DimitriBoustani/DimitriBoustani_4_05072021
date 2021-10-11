@@ -12,27 +12,25 @@
 
 <body>
 
-  <div class="topnav" id="myTopnav">
+  <header class="topnav" id="myTopnav">
     <div class="header-logo">
       <img alt="logo" src="Logo.png" width="auto" height="auto" />
     </div>
-
-    <div class="main-navbar">
-
+    <nav class="main-navbar">
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
       <a href="#"><span>À propos</span></a>
       <a href="#"><span>Contact</span></a>
       <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()"></a>
+      <a href="javascript:void(0);" class="icon" onclick="editNav()">
         <i class="fa fa-bars"></i>
       </a>
-    </div>
-  </div>
+    </nav>
+  </header>
 
   <main>
 
-    <div class="hero-section">
+    <section class="hero-section">
 
       <div class="hero-content">
         <h1 class="hero-headline">
@@ -53,7 +51,7 @@
       <button class="btn-signup modal-btn">
         je m'inscris
       </button>
-    </div>
+    </section>
 
     <div class="bground">
 
@@ -64,34 +62,34 @@
             <div class="formData">
               <label for="first">Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
-              <p class="msgerreur" id="errName"></p>
+              <p class="msgerreur" id="errName"></p> <!--Message d'erreur à afficher si le champ n'est pas correct-->
             </div>
 
             <div class="formData">
               <label for="last">Nom</label><br>
               <input class="text-control" type="text" id="last" name="last" minlength="2" /><br>
-              <p class="msgerreur" id="errLastName"></p>
+              <p class="msgerreur" id="errLastName"></p> <!--Message d'erreur à afficher si le champ n'est pas correct-->
             </div>
 
             <div class="formData">
               <label for="email">E-mail</label><br>
               <input class="text-control" type="email" id="email" name="email" /><br>
-              <p class="msgerreur" id="errEmail"></p>
+              <p class="msgerreur" id="errEmail"></p> <!--Message d'erreur à afficher si le champ n'est pas correct-->
             </div>
 
             <div class="formData">
               <label for="birthdate">Date de naissance</label><br>
               <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
-              <p class="msgerreur" id="errBirth"></p>
+              <p class="msgerreur" id="errBirth"></p> <!--Message d'erreur à afficher si le champ n'est pas correct-->
             </div>
 
             <div class="formData">
               <label for='quantity'>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
-              <p class="msgerreur" id="errQuantity"></p>
+              <p class="msgerreur" id="errQuantity"></p> <!--Message d'erreur à afficher si le champ n'est pas correct-->
             </div>
             <p class="text-label">Quelles villes ?</p>
-            <p class="msgerreur" id="errCity"></p>
+            <p class="msgerreur" id="errCity"></p> <!--Message d'erreur à afficher si le champ n'est pas correct-->
 
             <div class="formData">
               <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
@@ -126,7 +124,7 @@
                 <span class="checkbox-icon"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
-              <p class="msgerreur" id="errCond"></p>
+              <p class="msgerreur" id="errCond"></p> <!--Message d'erreur à afficher si le champ n'est pas correct-->
               <input class="checkbox-input" type="checkbox" id="checkbox2" />
               <label class="checkbox2-label" for="checkbox2">
                 <span class="checkbox-icon"></span>

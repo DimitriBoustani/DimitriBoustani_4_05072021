@@ -150,6 +150,7 @@ function correctCity() {
 form1.addEventListener('submit', (e) => {
   console.log("in submit")
   e.preventDefault();
+  // Vérifie un a un si les conditions des champs sont respectés
   if (correctID(firstname, errName) && correctID(lastname, errLastName) && correctMail(email, errEmail) && correctBirthdate(birthdate, errBirth) && correctQuantity(quantity, errQuantity) && correctCity(city, errCity)) {
     console.log("in if")
     modalB.style.display = "none";
@@ -161,7 +162,7 @@ form1.addEventListener('submit', (e) => {
         }
       })
     });
-    form1.reset();
+    form1.reset(); // Réinitialise le formulaire
   } else {}
   console.log("in else")
   return true;
