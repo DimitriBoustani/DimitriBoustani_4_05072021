@@ -121,7 +121,7 @@ function correctQuantity() {
     errQuantity.style.display = "block";
     return false;
   } else {
-    errQuantity.display = "none";
+    errQuantity.style.display = "none";
     return true;
   }
 };
@@ -142,7 +142,7 @@ function correctCity() {
     errCity.textContent = 'Veuillez choisir une ville'
     return false;
   } else {
-    errCity.display = "none";
+    errCity.style.display = "none";
     return true;
   }
 };
