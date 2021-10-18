@@ -603,7 +603,6 @@ footer {
 }
 
 .btn_fermer{
-  position: absolute;
   bottom: 25px;
   left: 0;
   right: 0;
@@ -614,4 +613,5 @@ footer {
   border: none;
   color: #fff;
   cursor: pointer;
+  margin-top: 175%;
 }
