@@ -68,7 +68,7 @@ function closemodalform() {
 function correctID(field, errfield) {
   let test = /^[A-Za-z]{2,20}$/.test(field.value);
   if (test == false) {
-    errfield.textContent = "Merci de saisir votre prenom"
+    errfield.textContent = "Merci de saisir au minimum 2 caractères"
     errfield.style.display = "block";
     return false;
   } else {
@@ -87,7 +87,7 @@ lastname.addEventListener("change", ($event) => {
 
 // Champs d'entrée email correct/incorrect
 function correctMail(field, errval) {
-  let test = /^[A-Z-a-z-0-9-.]+@([A-Z-a-z-0-9]+\.)+[A-Z-a-z-0-9]{2,40}$/.test(field.value);
+  let test = /^[A-Z-a-z-0-9-.]+@([A-Z-a-z-0-9]+\.)+[A-Z-a-z-0-9]{,40}$/.test(field.value);
   if (test == false) {
     errval.textContent = "Merci de saisir votre e-mail"
     errval.style.display = "block";
@@ -118,6 +118,7 @@ function correctBirthdate() {
 function correctQuantity() {
   if (quantity.value === "" || quantity.value >= 100) {
     errQuantity.textContent = "Veuillez choisir un nombre entre 0 et 99";
+    errQuantity.style.display = "block";
     return false;
   } else {
     errQuantity.display = "none";
