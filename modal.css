@@ -616,3 +616,21 @@ footer {
   margin-top: 175%;
   position: relative;
 }
+
+
+@media screen and (max-height: 800px){
+  .btn_fermer{
+    bottom: 25px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 10px 25px;
+    border-radius: 5px;
+    background-color: red;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 155%;
+    position: relative;
+  }
+}
